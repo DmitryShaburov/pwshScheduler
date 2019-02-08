@@ -1,0 +1,19 @@
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: nginx-pwsh-scheduler
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-pwsh-scheduler
+  template:
+    metadata:
+      labels:
+        app: nginx-pwsh-scheduler
+    spec:
+      schedulerName: pwshScheduler
+      containers:
+      - name: nginx-pwsh-scheduler
+        image: nginx:latest
